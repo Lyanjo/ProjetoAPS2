@@ -39,11 +39,13 @@ END;
 CREATE SEQUENCE seq_disponibilidades START WITH 1 INCREMENT BY 1;
 
 CREATE TABLE disponibilidades (
-    iddisponibilidade int NOT NULL,
-    idprofissional int NOT NULL,
-    horarioinicio timestamp NOT NULL,
-    horariofim timestamp NOT NULL,
-    PRIMARY KEY (iddisponibilidade)
+iddisponibilidade INT NOT NULL AUTO_INCREMENT,
+idprofissional INT NOT NULL,
+horarioinicio TIME NOT NULL,
+horariofim TIME NOT NULL,
+diasem ENUM('Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom') NOT NULL,
+PRIMARY KEY (iddisponibilidade),
+FOREIGN KEY (idprofissional) REFERENCES profissionais(idprofissional)
 );
 
 -- Trigger para auto incrementar iddisponibilidade
