@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastros</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #4CAF50;
+            padding: 15px;
+            text-align: center;
+            color: white;
+            font-size: 1.5em;
+        }
+        section {
+            padding: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+
+        
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+            }
+            header {
+                background-color: #4CAF50;
+                padding: 15px;
+                text-align: center;
+                color: white;
+                font-size: 1.5em;
+            }
+            nav {
+                display: flex;
+                justify-content: center;
+                background-color: #333;
+            }
+            nav a {
+                padding: 14px 20px;
+                text-decoration: none;
+                color: white;
+                text-align: center;
+            }
+            nav a:hover {
+                background-color: #ddd;
+                color: black;
+            }
+            section {
+                padding: 20px;
+            }
+        
+
+
+    </style>
+</head>
+<body>
+
+<header>
+    Cadastros
+</header>
+
+<nav></nav>
+    <a href="agenda.html">Agenda do Dia</a>
+    <a href="agendar.html">Agendar</a>
+    <a href="salas.html">Salas</a>
+    <a href="cadastros.html">Cadastros</a>
+    <a href="relatorios.html">Relatórios</a>
+</nav>
+
+<section>
+    <h2>Cadastros de Pacientes e Profissionais</h2>
+    <div class="form-group">
+        <label for="tipo-cadastro">Tipo de Cadastro:</label>
+        <select id="tipo-cadastro" onchange="toggleCadastro()">
+            <option value="">Selecione</option>
+            <option value="paciente">Paciente</option>
+            <option value="profissional">Profissional</option>
+        </select>
+    </div>
+
+    <!-- Cadastro de Paciente -->
+    <div id="cadastro-paciente" style="display:none;">
+        <h3>Cadastro de Paciente</h3>
+        <div class="form-group">
+            <label for="nome-paciente">Nome:</label>
+            <input type="text" id="nome-paciente" name="nome-paciente" required>
+        </div>
+        <div class="form-group">
+            <label for="email-paciente">Email:</label>
+            <input type="email" id="email-paciente" name="email-paciente" required>
+        </div>
+        <div class="form-group">
+            <label for="nascimento-paciente">Data de Nascimento:</label>
+            <input type="date" id="nascimento-paciente" name="nascimento-paciente" required>
+        </div>
+        <div class="form-group">
+            <label for="documento-paciente">Documento:</label>
+            <input type="text" id="documento-paciente" name="documento-paciente" required>
+        </div>
+        <div class="form-group">
+            <label for="telefone-paciente">Telefone:</label>
+            <input type="tel" id="telefone-paciente" name="telefone-paciente" required>
+        </div>
+        <div class="form-group">
+            <label for="profissional-fixo">Profissional Fixo (Opcional):</label>
+            <select id="profissional-fixo" name="profissional-fixo">
+                <option value="">Selecione o Profissional</option>
+                <!-- Aqui entrariam os profissionais cadastrados -->
+            </select>
+        </div>
+        <button type="submit">Salvar Paciente</button>
+    </div>
+
+    <!-- Cadastro de Profissional -->
+    <div id="cadastro-profissional" style="display:none;">
+        <h3>Cadastro de Profissional</h3>
+        <div class="form-group">
+            <label for="nome-profissional">Nome:</label>
+            <input type="text" id="nome-profissional" name="nome-profissional" required>
+        </div>
+        <div class="form-group">
+            <label for="crp">CRP:</label>
+            <input type="text" id="crp" name="crp" required>
+        </div>
+        <div class="form-group">
+            <label for="especialidade">Especialidade:</label>
+            <input type="text" id="especialidade" name="especialidade" required>
+        </div>
+        <div class="form-group">
+            <label for="telefone-profissional">Telefone:</label>
+            <input type="tel" id="telefone-profissional" name="telefone-profissional" required>
+        </div>
+        <div class="form-group">
+            <label for="email-profissional">Email:</label>
+            <input type="email" id="email-profissional" name="email-profissional" required>
+        </div>
+        <div class="form-group">
+            <label for="preferencia-horario">Preferência de Horário:</label>
+            <input type="text" id="preferencia-horario" name="preferencia-horario" required>
+        </div>
+        <div class="form-group">
+            <label for="dias-atendimento">Dias de Atendimento:</label>
+            <input type="text" id="dias-atendimento" name="dias-atendimento" required>
+        </div>
+        <button type="submit">Salvar Profissional</button>
+    </div>
+</section>
+
+<script>
+    function toggleCadastro() {
+        var tipoCadastro = document.getElementById('tipo-cadastro').value;
+        document.getElementById('cadastro-paciente').style.display = tipoCadastro === 'paciente' ? 'block' : 'none';
+        document.getElementById('cadastro-profissional').style.display = tipoCadastro === 'profissional' ? 'block' : 'none';
+    }
+</script>
+
+</body>
+</html>
