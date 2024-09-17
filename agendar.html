@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,6 +12,7 @@
             padding: 0;
             background-color: #f4f4f4;
         }
+
         header {
             background-color: #4CAF50;
             padding: 15px;
@@ -18,56 +20,69 @@
             color: white;
             font-size: 1.5em;
         }
+
         nav {
             display: flex;
             justify-content: center;
             background-color: #333;
         }
+
         nav a {
             padding: 14px 20px;
             text-decoration: none;
             color: white;
             text-align: center;
         }
+
         nav a:hover {
             background-color: #ddd;
             color: black;
         }
+
         section {
             display: flex;
             justify-content: center;
             align-items: center;
-            height: calc(100vh - 100px); /* Altura da tela menos a altura do header e do nav */
+            height: calc(100vh - 100px);
+            /* Altura da tela menos a altura do header e do nav */
             padding: 20px;
         }
+
         .form-container {
             background-color: white;
             padding: 30px;
             border-radius: 8px;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
             width: 100%;
-            max-width: 600px; /* Limite de largura máxima para o formulário */
+            max-width: 600px;
+            /* Limite de largura máxima para o formulário */
             box-sizing: border-box;
         }
+
         h2 {
             text-align: center;
             color: #333;
         }
+
         .form-group {
             margin-bottom: 15px;
         }
+
         label {
             display: block;
             margin-bottom: 5px;
             font-weight: bold;
         }
-        input, select {
+
+        input,
+        select {
             width: 100%;
             padding: 10px;
             margin: 5px 0 10px;
             border: 1px solid #ccc;
             border-radius: 4px;
         }
+
         button {
             width: 100%;
             padding: 10px;
@@ -78,159 +93,82 @@
             cursor: pointer;
             font-size: 16px;
         }
+
         button:hover {
             background-color: #45a049;
         }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
+
 <body>
 
-<header>
-    Pschedule - Sistema de Agendamento
-</header>
+    <header>
+        Pschedule - Sistema de Agendamento
+    </header>
 
-<!-- Menu de navegação -->
-<nav>
-    <a href="agenda.html">Agenda do Dia</a>
-    <a href="agendar.html">Agendar</a>
-    <a href="cadastros.html">Cadastros</a>
-    <a href="relatorios.html">Relatórios</a>
-</nav>
+    <!-- Menu de navegação -->
+    <nav>
+        <a href="agenda.html">Agenda do Dia</a>
+        <a href="agendar.html">Agendar</a>
+        <a href="cadastros.html">Cadastros</a>
+        <a href="relatorios.html">Relatórios</a>
+    </nav>
 
-<section>
-    <div class="form-container">
-        <h2>Agendar uma nova consulta</h2>
-        <!-- Formulário de agendamento -->
-        <form id="agendamento-form">
-            <div class="form-group">
-                <label for="paciente">Paciente:</label>
-                <select id="paciente" name="paciente">
-                    <option value="">Selecione o Paciente</option>
-                    <!-- As opções serão preenchidas via JavaScript -->
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="profissional">Profissional:</label>
-                <select id="profissional" name="profissional">
-                    <option value="">Selecione o Profissional</option>
-                    <!-- As opções serão preenchidas via JavaScript -->
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="data">Data:</label>
-                <input type="date" id="data" name="data" required>
-            </div>
-            <div class="form-group">
-                <label for="hora">Hora:</label>
-                <input type="time" id="hora" name="hora" required>
-            </div>
-            <div class="form-group">
-                <label for="sala">Sala:</label>
-                <select id="sala" name="sala">
-                    <option value="">Selecione a Sala</option>
-                    <!-- As opções serão preenchidas via JavaScript -->
-                </select>
-            </div>
+    <section>
+        <div class="form-container">
+            <h2>Agendar uma nova consulta</h2>
+            <!-- Formulário de agendamento -->
+            <form id="agendamento-form">
+                <div class="form-group">
+                    <label for="paciente">Paciente:</label>
+                    <select id="paciente" name="paciente">
+                        <option value="">Selecione o Paciente</option>
+                        <!-- As opções serão preenchidas via JavaScript -->
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="profissional">Profissional:</label>
+                    <select id="profissional" name="profissional">
+                        <option value="">Selecione o Profissional</option>
+                        <!-- As opções serão preenchidas via JavaScript -->
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="data">Data:</label>
+                    <input type="date" id="data" name="data" required>
+                </div>
+                <div class="form-group">
+                    <label for="hora">Hora:</label>
+                    <select id="hora" defaultValue="08:00" required>
+                        <option value="08:00">08:00</option>
+                        <option value="09:00">09:00</option>
+                        <option value="10:00">10:00</option>
+                        <option value="11:00">11:00</option>
+                        <option value="12:00">12:00</option>
+                        <option value="13:00">13:00</option>
+                        <option value="14:00">14:00</option>
+                        <option value="15:00">15:00</option>
+                        <option value="16:00">16:00</option>
+                        <option value="17:00">17:00</option>
+                        <option value="18:00">18:00</option>
+                        <option value="19:00">19:00</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="sala">Sala:</label>
+                    <select id="sala" name="sala">
+                        <option value="">Selecione a Sala</option>
+                    </select>
+                </div>
 
-            <button type="button" onclick="saveAppointment()">Agendar Consulta e Sala</button>
-        </form>
-    </div>
-</section>
+                <button id="submitButton" type="button" onclick="agendar.saveAppointment()">Agendar Consulta e Sala</button>
+            </form>
+        </div>
+    </section>
 
-<script>
-    // Configuração do Supabase
-    const supabaseUrl = 'https://jzijhoertjzjurmghbzr.supabase.co';
-    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imp6aWpob2VydGp6anVybWdoYnpyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjU0NTg4ODMsImV4cCI6MjA0MTAzNDg4M30.A6MMeZO3kkzYHRJUxka1q3L7owb60BqIBxe5TBHQKPc';
-    const supabase = supabase.createClient(supabaseUrl, supabaseKey);
-
-    async function loadOptions() {
-        // Carregar pacientes
-        const { data: patients, error: patientError } = await supabase
-            .from('patients')
-            .select('id, name');
-        
-        if (patientError) {
-            console.error('Erro ao carregar pacientes:', patientError);
-            return;
-        }
-
-        // Preencher o campo de pacientes
-        const patientSelect = document.getElementById('paciente');
-        patients.forEach(patient => {
-            const option = document.createElement('option');
-            option.value = patient.id;
-            option.textContent = patient.name;
-            patientSelect.appendChild(option);
-        });
-
-        // Carregar profissionais
-        const { data: professionals, error: professionalError } = await supabase
-            .from('professionals')
-            .select('id, name');
-        
-        if (professionalError) {
-            console.error('Erro ao carregar profissionais:', professionalError);
-            return;
-        }
-
-        // Preencher o campo de profissionais
-        const professionalSelect = document.getElementById('profissional');
-        professionals.forEach(professional => {
-            const option = document.createElement('option');
-            option.value = professional.id;
-            option.textContent = professional.name;
-            professionalSelect.appendChild(option);
-        });
-
-        // Carregar salas
-        const { data: rooms, error: roomError } = await supabase
-            .from('rooms')
-            .select('id, name');
-        
-        if (roomError) {
-            console.error('Erro ao carregar salas:', roomError);
-            return;
-        }
-
-        // Preencher o campo de salas
-        const roomSelect = document.getElementById('sala');
-        rooms.forEach(room => {
-            const option = document.createElement('option');
-            option.value = room.id;
-            option.textContent = room.name;
-            roomSelect.appendChild(option);
-        });
-    }
-
-    async function saveAppointment() {
-        const appointmentData = {
-            patient_id: document.getElementById('paciente').value,
-            professional_id: document.getElementById('profissional').value,
-            appointment_datetime: `${document.getElementById('data').value}T${document.getElementById('hora').value}:00`,
-            room_id: document.getElementById('sala').value
-        };
-
-        // Inserir o novo agendamento na tabela
-        const { data, error } = await supabase
-            .from('appointments')
-            .insert([appointmentData]);
-
-        if (error) {
-            console.error('Erro ao agendar:', error);
-            alert('Erro ao agendar. Veja o console para mais detalhes.');
-            return;
-        }
-
-        console.log('Agendamento criado com sucesso:', data);
-        alert('Agendamento criado com sucesso!');
-        // Limpar o formulário após o sucesso
-        document.getElementById('agendamento-form').reset();
-    }
-
-    // Carregar opções quando a página carrega
-    window.onload = loadOptions;
-</script>
+    <script type="module" src="agendar.js"></script>
 
 </body>
+
 </html>
