@@ -7,33 +7,6 @@
     <title>Cadastros</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="style2.css">
-    
-    <script>
-        function toggleCadastro() {
-            const tipoCadastro = document.getElementById("tipo-cadastro").value;
-            const cadastroPaciente = document.getElementById("cadastro-paciente");
-            const cadastroProfissional = document.getElementById("cadastro-profissional");
-
-            if (tipoCadastro === "paciente") {
-                cadastroPaciente.style.display = "block";
-                cadastroProfissional.style.display = "none";
-            } else if (tipoCadastro === "profissional") {
-                cadastroPaciente.style.display = "none";
-                cadastroProfissional.style.display = "block";
-            } else {
-                cadastroPaciente.style.display = "none";
-                cadastroProfissional.style.display = "none";
-            }
-        }
-
-        function savePatient() {
-            alert("Paciente salvo com sucesso!");
-        }
-
-        function saveProfessional() {
-            alert("Profissional salvo com sucesso!");
-        }
-    </script>
 </head>
 
 <body>
@@ -44,8 +17,7 @@
     
     <nav class="navbar navbar-expand-lg" style="background-color: #66bb6a;">
         <div class="container">
-            <a class="navbar-brand" href="#">
-            </a>
+            <a class="navbar-brand" href="#"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -140,6 +112,9 @@
             </div>
         </div>
     </section>
+
+    <!-- Referência ao arquivo JavaScript externo -->
+    <script src="cadastros.js"></script> <!-- Certifique-se que este arquivo seja o correto -->
 
 </body>
 
