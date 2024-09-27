@@ -3,140 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style2.css">
     <title>Agenda do Dia</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-        header {
-            background-color: #4CAF50;
-            padding: 15px;
-            text-align: center;
-            color: white;
-            font-size: 1.5em;
-        }
-        nav {
-            display: flex;
-            justify-content: center;
-            background-color: #333;
-        }
-        nav a {
-            padding: 14px 20px;
-            text-decoration: none;
-            color: white;
-            text-align: center;
-        }
-        nav a:hover {
-            background-color: #ddd;
-            color: black;
-        }
-        section {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: calc(100vh - 100px); /* Ajusta a altura para preencher o espaço restante */
-            padding: 20px;
-        }
-        .form-container {
-            background-color: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 800px;
-            box-sizing: border-box;
-        }
-        h2 {
-            text-align: center;
-            color: #333;
-        }
-        .form-group {
-            margin-bottom: 15px;
-        }
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-        input, select {
-            width: 100%;
-            padding: 10px;
-            margin: 5px 0 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-        button {
-            width: 100%;
-            padding: 10px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-        button:hover {
-            background-color: #45a049;
-        }
-    </style>
 </head>
 <body>
 
-<header>
-    Pschedule - Sistema de Agendamento
+<header class="bg-success text-white text-center py-4">
+    <h1>Pschedule - Sistema de Agendamento</h1>
 </header>
 
-<nav>
-    <a href="agenda.html">Agenda do Dia</a>
-    <a href="agendar.html">Agendar</a>
-    <a href="cadastros.html">Cadastros</a>
-    <a href="relatorios.html">Relatórios</a>
+<nav class="navbar navbar-expand-lg" style="background-color: #66bb6a;">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="agenda.html">Agenda do Dia</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="agendar.html">Agendar</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="cadastros.html">Cadastros</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="relatorios.html">Relatórios</a>
+                </li>
+            </ul>
+        </div>
+    </div>
 </nav>
-
-<section>
+<section class="container">
     <div class="form-container">
-        <h2>Relatórios</h2>
+        <h2 class="my-4">Relatórios</h2>
         <!-- Formulário de relatório -->
         <form id="relatorio-form">
             <div class="form-group">
                 <label for="Profissional">Profissional:</label>
-                <select id="Profissional" name="Profissional">
+                <select id="Profissional" name="Profissional" class="form-control">
                     <option value="">Selecione o Profissional</option>
                     <!-- Aqui entrariam os profissionais cadastrados -->
                 </select>
             </div>
             <div class="form-group">
                 <label for="data-inicial">Data Inicial:</label>
-                <input type="date" id="data-inicial" name="data-inicial">
+                <input type="date" id="data-inicial" name="data-inicial" class="form-control">
             </div>
             <div class="form-group">
                 <label for="hora-inicial">Hora Inicial:</label>
-                <input type="time" id="hora-inicial" name="hora-inicial">
+                <input type="time" id="hora-inicial" name="hora-inicial" class="form-control">
             </div>
             <div class="form-group">
                 <label for="data-final">Data Final:</label>
-                <input type="date" id="data-final" name="data-final">
+                <input type="date" id="data-final" name="data-final" class="form-control">
             </div>
             <div class="form-group">
                 <label for="hora-final">Hora Final:</label>
-                <input type="time" id="hora-final" name="hora-final">
+                <input type="time" id="hora-final" name="hora-final" class="form-control">
             </div>
             <div class="form-group">
                 <label for="Protocolo">Protocolo:</label>
-                <input type="text" id="Protocolo" name="Protocolo" required>
+                <input type="text" id="Protocolo" name="Protocolo" class="form-control" required>
             </div>
             <div class="form-group">
                 <label for="tipo-relatorio">Tipo de Relatório:</label>
-                <select id="tipo-relatorio" name="tipo-relatorio">
+                <select id="tipo-relatorio" name="tipo-relatorio" class="form-control">
                     <option value="">Selecione</option>
                     <option value="csv">CSV</option>
                     <option value="xls">XLS</option>
                 </select>
             </div>
-            <button type="submit">Buscar</button>
+            <button type="submit" class="btn btn-success">Buscar</button>
         </form>
     </div>
 </section>
