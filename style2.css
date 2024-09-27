@@ -55,16 +55,6 @@ section {
     padding-top: 20px; /* Adiciona espaçamento superior */
 }
 
-/* Estilo específico da seção "Agenda do Dia" */
-section.agenda {
-    max-width: 800px; /* Define uma largura máxima para deixar mais compacto */
-    margin: 0 auto; /* Centraliza a seção */
-    padding: 20px; /* Adiciona espaçamento interno */
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra sutil */
-}
-
 /* Estilo dos títulos h2 */
 h2 {
     margin-top: 20px;
@@ -118,15 +108,24 @@ input[type="text"],
 input[type="email"],
 input[type="tel"],
 input[type="password"],
-input[type="date"],
 select,
-textarea {
+textarea,
+input[type="date"] { /* Incluindo campos de data */
     width: 100%;
     padding: 12px 15px;
     border: 1px solid #ccc;
     border-radius: 6px;
     font-size: 16px;
     font-family: 'Roboto', sans-serif; /* Garante a mesma fonte */
+}
+
+/* Estilos específicos para os campos de data */
+input[type="date"] {
+    background-color: #f7f7f7; /* Fundo mais claro para os campos de data */
+}
+
+input[type="date"]:hover {
+    border-color: #4CAF50; /* Borda verde ao passar o mouse */
 }
 
 /* Botões do formulário */
@@ -152,24 +151,34 @@ button:hover {
 /* Estilo da tabela */
 table {
     width: 100%;
-    max-width: 800px; /* Define um tamanho máximo para a tabela */
-    margin: 20px auto; /* Centraliza a tabela e adiciona espaçamento superior */
     border-collapse: collapse;
+    margin-bottom: 40px;
 }
 
-th {
-    background-color: #4CAF50; /* Verde para os cabeçalhos */
-    color: white; /* Letra branca */
-    padding: 12px;
-    text-align: left;
-    border: 1px solid #ddd; /* Borda sutil */
-    font-weight: bold;
-}
-
+th,
 td {
     padding: 12px;
     text-align: left;
-    border: 1px solid #ddd; /* Mesma borda para harmonizar com os cabeçalhos */
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #4CAF50; /* Verde padrão */
+    color: white; /* Texto branco */
+    padding: 12px; /* Espaçamento */
+    border-bottom: 2px solid #ddd; /* Borda sutil */
+}
+
+/* Estilo das linhas da tabela com fundo verde claro */
+tbody tr {
+    background-color: #d9f7e9; /* Tom de verde mais claro */
+}
+
+/* Estilo das colunas específicas */
+td.date,
+td.hour,
+td.room {
+    width: 15%; /* Ajusta a largura das colunas de data, hora e sala */
 }
 
 /* Estilos responsivos */
