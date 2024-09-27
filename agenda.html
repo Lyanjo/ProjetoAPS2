@@ -5,84 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agenda do Dia</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-
-        header {
-            background-color: #4CAF50;
-            padding: 15px;
-            text-align: center;
-            color: white;
-            font-size: 1.5em;
-        }
-
-        nav {
-            display: flex;
-            justify-content: center;
-            background-color: #333;
-        }
-
-        nav a {
-            padding: 14px 20px;
-            text-decoration: none;
-            color: white;
-            text-align: center;
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        nav a:hover {
-            background-color: #ddd;
-            color: black;
-        }
-
-        section {
-            padding: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        h2 {
-            text-align: center;
-            color: #333;
-            margin-bottom: 20px;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 0 auto;
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        thead {
-            background-color: #4CAF50;
-            color: white;
-        }
-
-        th, td {
-            padding: 12px;
-            text-align: center;
-            border-bottom: 1px solid #ddd;
-        }
-
-        th {
-            font-weight: bold;
-        }
-
-        tbody tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
-
-        tbody tr:hover {
-            background-color: #ddd;
-        }
-    </style>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style2.css">
 </head>
 
 <body>
@@ -91,12 +15,32 @@
         Pschedule - Sistema de Agendamento
     </header>
 
-    <nav>
-        <a href="agenda.html">Agenda do Dia</a>
-        <a href="agendar.html">Agendar</a>
-        <a href="cadastros.html">Cadastros</a>
-        <a href="relatorios.html">Relatórios</a>
+    <nav class="navbar navbar-expand-lg" style="background-color: #66bb6a;">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="agenda.html">Agenda do Dia</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="agendar.html">Agendar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="cadastros.html">Cadastros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="relatorios.html">Relatórios</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </nav>
+
 
     <section>
         <h2>Quadro de Horários e Consultas do Dia</h2>
