@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
@@ -7,41 +7,17 @@
     <title>Cadastros</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="style2.css">
-    
-    <script>
-        function toggleCadastro() {
-            const tipoCadastro = document.getElementById("tipo-cadastro").value;
-            const cadastroPaciente = document.getElementById("cadastro-paciente");
-            const cadastroProfissional = document.getElementById("cadastro-profissional");
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script type="module" src="cadastros.js" defer></script>
 
-            if (tipoCadastro === "paciente") {
-                cadastroPaciente.style.display = "block";
-                cadastroProfissional.style.display = "none";
-            } else if (tipoCadastro === "profissional") {
-                cadastroPaciente.style.display = "none";
-                cadastroProfissional.style.display = "block";
-            } else {
-                cadastroPaciente.style.display = "none";
-                cadastroProfissional.style.display = "none";
-            }
-        }
-
-        function savePatient() {
-            alert("Paciente salvo com sucesso!");
-        }
-
-        function saveProfessional() {
-            alert("Profissional salvo com sucesso!");
-        }
-    </script>
 </head>
 
 <body>
 
-    <header class="bg-success text-white text-center py-4">
-        <h1>Pschedule - Sistema de Agendamento</h1>
+    <header>
+        Pschedule - Sistema de Agendamento
     </header>
-    
+<!-- somente o nav alterado por conta do novo css -->
     <nav class="navbar navbar-expand-lg" style="background-color: #66bb6a;">
         <div class="container">
             <a class="navbar-brand" href="#">
@@ -67,12 +43,13 @@
             </div>
         </div>
     </nav>
-    <section class="container">
+
+    <section>
         <div class="form-container">
-            <h2 class="my-4">Cadastros de Pacientes e Profissionais</h2>
+            <h2>Cadastros de Pacientes e Profissionais</h2>
             <div class="form-group">
                 <label for="tipo-cadastro">Tipo de Cadastro:</label>
-                <select id="tipo-cadastro" class="form-control" onchange="toggleCadastro()">
+                <select id="tipo-cadastro" onchange="toggleCadastro()">
                     <option value="">Selecione</option>
                     <option value="paciente">Paciente</option>
                     <option value="profissional">Profissional</option>
@@ -85,26 +62,26 @@
                 <form id="cadastro-paciente-form">
                     <div class="form-group">
                         <label for="nome-paciente">Nome:</label>
-                        <input type="text" id="nome-paciente" name="nome-paciente" class="form-control" required>
+                        <input type="text" id="nome-paciente" name="nome-paciente" required>
                     </div>
                     <div class="form-group">
                         <label for="email-paciente">Email:</label>
-                        <input type="email" id="email-paciente" name="email-paciente" class="form-control" required>
+                        <input type="email" id="email-paciente" name="email-paciente" required>
                     </div>
                     <div class="form-group">
                         <label for="nascimento-paciente">Data de Nascimento:</label>
-                        <input type="date" id="nascimento-paciente" name="nascimento-paciente" class="form-control" required>
+                        <input type="date" id="nascimento-paciente" name="nascimento-paciente" required>
                     </div>
                     <div class="form-group">
                         <label for="documento-paciente">Documento:</label>
-                        <input type="text" id="documento-paciente" name="documento-paciente" class="form-control" required>
+                        <input type="text" id="documento-paciente" name="documento-paciente" required>
                     </div>
                     <div class="form-group">
                         <label for="telefone-paciente">Telefone:</label>
-                        <input type="tel" id="telefone-paciente" name="telefone-paciente" class="form-control" required>
+                        <input type="tel" id="telefone-paciente" name="telefone-paciente" required>
                     </div>
 
-                    <button type="button" class="btn btn-success" onclick="savePatient()">Salvar Paciente</button>
+                    <button type="button" onclick="savePatient()">Salvar Paciente</button>
                 </form>
             </div>
 
@@ -114,33 +91,38 @@
                 <form id="cadastro-profissional-form">
                     <div class="form-group">
                         <label for="nome-profissional">Nome:</label>
-                        <input type="text" id="nome-profissional" name="nome-profissional" class="form-control" required>
+                        <input type="text" id="nome-profissional" name="nome-profissional" required>
                     </div>
                     <div class="form-group">
                         <label for="crp">CRP/CRM:</label>
-                        <input type="text" id="crp" name="crp" class="form-control" required>
+                        <input type="text" id="crp" name="crp" required>
                     </div>
                     <div class="form-group">
                         <label for="especialidade">Especialidade:</label>
-                        <select id="especialidade" name="especialidade" class="form-control" required>
+                        <select id="especialidade" name="especialidade" defaultValue="Psicologia" required>
                             <option value="Psicologia">Psicologia</option>
                             <option value="Psiquiatria">Psiquiatria</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="telefone-profissional">Telefone:</label>
-                        <input type="tel" id="telefone-profissional" name="telefone-profissional" class="form-control" required>
+                        <input type="tel" id="telefone-profissional" name="telefone-profissional" required>
                     </div>
                     <div class="form-group">
                         <label for="email-profissional">Email:</label>
-                        <input type="email" id="email-profissional" name="email-profissional" class="form-control" required>
+                        <input type="email" id="email-profissional" name="email-profissional" required>
                     </div>
-                    <button type="button" class="btn btn-success" onclick="saveProfessional()">Salvar Profissional</button>
+                    <button type="button" onclick="saveProfessional()">Salvar Profissional</button>
                 </form>
             </div>
         </div>
     </section>
-<script type="module" src="./cadastros.js"></script>
+
+
+    <script type="module" src="./cadastros.js">
+
+    </script>
+
 </body>
 
 </html>
