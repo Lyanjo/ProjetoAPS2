@@ -55,6 +55,16 @@ section {
     padding-top: 20px; /* Adiciona espaçamento superior */
 }
 
+/* Estilo específico da seção "Agenda do Dia" */
+section.agenda {
+    max-width: 800px; /* Define uma largura máxima para deixar mais compacto */
+    margin: 0 auto; /* Centraliza a seção */
+    padding: 20px; /* Adiciona espaçamento interno */
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra sutil */
+}
+
 /* Estilo dos títulos h2 */
 h2 {
     margin-top: 20px;
@@ -145,16 +155,19 @@ table {
     margin-bottom: 40px;
 }
 
-th,
+th {
+    background-color: #4CAF50; /* Verde para os cabeçalhos */
+    color: white; /* Letra branca */
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #ddd; /* Borda sutil */
+    font-weight: bold;
+}
+
 td {
     padding: 12px;
     text-align: left;
-    border-bottom: 1px solid #ddd;
-}
-
-th {
-    background-color: #f7f7f7;
-    font-weight: bold;
+    border: 1px solid #ddd; /* Mesma borda para harmonizar com os cabeçalhos */
 }
 
 /* Estilos responsivos */
