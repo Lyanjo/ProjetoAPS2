@@ -118,6 +118,7 @@ input[type="text"],
 input[type="email"],
 input[type="tel"],
 input[type="password"],
+input[type="date"],
 select,
 textarea {
     width: 100%;
@@ -151,8 +152,9 @@ button:hover {
 /* Estilo da tabela */
 table {
     width: 100%;
+    max-width: 800px; /* Define um tamanho máximo para a tabela */
+    margin: 20px auto; /* Centraliza a tabela e adiciona espaçamento superior */
     border-collapse: collapse;
-    margin-bottom: 40px;
 }
 
 th {
