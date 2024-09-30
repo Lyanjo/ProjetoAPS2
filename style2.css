@@ -150,7 +150,8 @@ button:hover {
 
 /* Estilo da tabela */
 table {
-    width: 100%; /* Largura total */
+    width: 80%; /* Largura total */
+    margin: 0 auto; /* Centraliza a tabela horizontalmente */
     border-collapse: collapse; /* Remove espaços entre bordas */
     margin-bottom: 40px; /* Espaçamento inferior */
 }
@@ -195,4 +196,9 @@ td.room {
     h2 {
         font-size: 24px; /* Tamanho da fonte reduzido */
     }
+}
+
+select option:disabled {
+    background-color: rgba(237, 63, 63, 0.896);
+    color: white;
 }

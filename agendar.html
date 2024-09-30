@@ -35,9 +35,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="cadastros.html">Cadastros</a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link" href="relatorios.html">Relatórios</a>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
         </div>
@@ -52,13 +52,6 @@
                     <label for="paciente">Paciente:</label>
                     <select id="paciente" name="paciente">
                         <option value="">Selecione o Paciente</option>
-                        <!-- As opções serão preenchidas via JavaScript -->
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="profissional">Profissional:</label>
-                    <select id="profissional" name="profissional">
-                        <option value="">Selecione o Profissional</option>
                         <!-- As opções serão preenchidas via JavaScript -->
                     </select>
                 </div>
@@ -84,13 +77,20 @@
                     </select>
                 </div>
                 <div class="form-group">
+                    <label for="profissional">Profissional:</label>
+                    <select id="profissional" name="profissional">
+                        <option value="">Selecione o Profissional</option>
+                        <!-- As opções serão preenchidas via JavaScript -->
+                    </select>
+                </div>
+                <div class="form-group">
                     <label for="sala">Sala:</label>
                     <select id="sala" name="sala">
                         <option value="">Selecione a Sala</option>
                     </select>
                 </div>
 
-                <button id="submitButton" type="button" onclick="agendar.saveAppointment()">Agendar Consulta e Sala</button>
+                <button id="submitButton" type="button" onclick="agendar.saveAppointment()">Agendar Consulta</button>
             </form>
         </div>
     </section>

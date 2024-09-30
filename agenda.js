@@ -9,23 +9,24 @@ async function loadSchedule() {
     try {
         // Carregar pacientes
         const { data: appointments, error: appointmentsError } = await supabase
-            .from('atendimentos')
-            .select(`
-                dataconsulta,
-                horaconsulta,
-                salas (numsala),
-                pacientes (nome),
-                profissionais (nome)
-            `)
-            .eq("dataconsulta", getTodayDate())
-            .order('horaconsulta', { ascending: true });
+        .from('atendimentos')
+        .select(`
+            dataconsulta,
+            horaconsulta,
+            salas (numsala),
+            pacientes (nome),
+            profissionais (nome)
+        `)
+        .eq("dataconsulta", getTodayDate())
+        .order('horaconsulta', { ascending: true })
+        .order('salas (numsala)', { ascending: true });
 
-        if (appointmentsError) {
-            console.error('Erro ao carregar agenda:', appointmentsError);
-            return;
-        }
-        console.log(appointments);
-
+    if (appointmentsError) {
+        console.error('Erro ao carregar agendamentos:', appointmentsError);
+    } else {
+        console.log('Agendamentos carregados:', appointments);
+    }  
+    
         const tableBody = document.getElementById('tabela-agenda').getElementsByTagName('tbody')[0];
 
         appointments.forEach((appointment) => {
