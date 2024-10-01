@@ -7,7 +7,6 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 
 async function loadOptions() {
   try {
-    // Carregar pacientes
     const { data: patients, error: patientError } = await supabase
       .from("pacientes")
       .select("idpaciente, nome")
@@ -18,9 +17,8 @@ async function loadOptions() {
       return;
     }
 
-    // Limpar o campo de pacientes antes de adicionar novos
     const patientSelect = document.getElementById("paciente");
-    patientSelect.innerHTML = '<option value="">Selecione o Paciente</option>'; // Limpar opções existentes
+    patientSelect.innerHTML = '<option value="">Selecione o Paciente</option>';
     patients.forEach((paciente) => {
       const option = document.createElement("option");
       option.value = paciente.idpaciente;
@@ -34,7 +32,6 @@ async function loadOptions() {
 
 async function loadRoomsAndProfessionals(dataConsulta, horaConsulta) {
   try {
-    // Carregar salas disponíveis
     const { data: rooms, error: roomError } = await supabase
       .from("salas")
       .select("idsala, numsala");
@@ -44,7 +41,6 @@ async function loadRoomsAndProfessionals(dataConsulta, horaConsulta) {
       return;
     }
 
-    // Verificar quais salas estão ocupadas no horário escolhido
     const { data: occupiedRooms } = await supabase
       .from("atendimentos")
       .select("idsala")
@@ -52,25 +48,18 @@ async function loadRoomsAndProfessionals(dataConsulta, horaConsulta) {
       .eq("horaconsulta", horaConsulta);
 
     const occupiedRoomIds = occupiedRooms.map((room) => room.idsala);
+    
+    const allRoomsOccupied = rooms.length > 0 && rooms.every((room) => occupiedRoomIds.includes(room.idsala));
 
-    // Verificar se todas as salas estão ocupadas para o horário específico
-    const allRoomsOccupied =
-      rooms.length > 0 &&
-      rooms.every((room) => occupiedRoomIds.includes(room.idsala));
-
-    // Se todas as salas estiverem ocupadas, desabilitar o horário
     const timeInput = document.getElementById("hora");
     const optionToDisable = [...timeInput.options].find(
       (option) => option.value === horaConsulta.slice(0, 5)
     );
 
-    if (allRoomsOccupied && optionToDisable) {
-      optionToDisable.disabled = true;
-    } else if (!allRoomsOccupied && optionToDisable) {
-      optionToDisable.disabled = false; // Habilita caso haja disponibilidade
+    if (optionToDisable) {
+      optionToDisable.disabled = allRoomsOccupied;
     }
 
-    // Preencher o campo de salas com base na disponibilidade
     const roomSelect = document.getElementById("sala");
     roomSelect.innerHTML = '<option value="">Selecione a Sala</option>';
     rooms.forEach((room) => {
@@ -81,7 +70,6 @@ async function loadRoomsAndProfessionals(dataConsulta, horaConsulta) {
       roomSelect.appendChild(option);
     });
 
-    // Carregar profissionais disponíveis
     const { data: professionals, error: professionalError } = await supabase
       .from("profissionais")
       .select("idprofissional, nome")
@@ -92,7 +80,6 @@ async function loadRoomsAndProfessionals(dataConsulta, horaConsulta) {
       return;
     }
 
-    // Verificar quais profissionais estão ocupados no horário escolhido
     const { data: occupiedProfessionals } = await supabase
       .from("atendimentos")
       .select("idprofissional")
@@ -103,10 +90,8 @@ async function loadRoomsAndProfessionals(dataConsulta, horaConsulta) {
       (prof) => prof.idprofissional
     );
 
-    // Preencher o campo de profissionais com base na disponibilidade
     const professionalSelect = document.getElementById("profissional");
-    professionalSelect.innerHTML =
-      '<option value="">Selecione o Profissional</option>';
+    professionalSelect.innerHTML = '<option value="">Selecione o Profissional</option>';
     professionals.forEach((prof) => {
       const option = document.createElement("option");
       option.value = prof.idprofissional;
@@ -115,7 +100,6 @@ async function loadRoomsAndProfessionals(dataConsulta, horaConsulta) {
       professionalSelect.appendChild(option);
     });
 
-    // Habilitar o campo de profissionais após a seleção de data e hora
     document.getElementById("profissional").disabled = false;
   } catch (error) {
     console.error("Erro geral ao carregar salas e profissionais:", error);
@@ -133,7 +117,6 @@ export async function saveAppointment() {
 
   console.log(appointmentData);
   try {
-    // Inserir o novo agendamento na tabela
     const { data, error } = await supabase
       .from("atendimentos")
       .insert([appointmentData]);
@@ -146,7 +129,6 @@ export async function saveAppointment() {
 
     console.log("Agendamento criado com sucesso:", data);
     alert("Agendamento criado com sucesso!");
-    // Limpar o formulário após o sucesso
     document.getElementById("agendamento-form").reset();
   } catch (error) {
     console.error("Erro geral ao salvar agendamento:", error);
@@ -156,15 +138,15 @@ export async function saveAppointment() {
 const getTodayDate = () => {
   const today = new Date();
   const year = today.getFullYear();
-  const month = String(today.getMonth() + 1).padStart(2, "0"); // Meses são baseados em 0
+  const month = String(today.getMonth() + 1).padStart(2, "0");
   const day = String(today.getDate()).padStart(2, "0");
   return `${year}-${month}-${day}`;
 };
 
 const setTimeLimits = () => {
   const timeInput = document.getElementById("hora");
-  timeInput.setAttribute("min", "08:00"); // Define hora mínima
-  timeInput.setAttribute("max", "19:00"); // Define hora máxima
+  timeInput.setAttribute("min", "08:00");
+  timeInput.setAttribute("max", "19:00");
 };
 
 // Limpar campos ao alterar a data
@@ -178,6 +160,12 @@ document.getElementById("data").addEventListener("change", () => {
     '<option value="">Selecione a Sala</option>'; // Limpa as opções de sala
 
   if (dataConsulta) {
+    // Recarregar todas as opções de hora para o novo dia
+    const timeInput = document.getElementById("hora");
+    [...timeInput.options].forEach(option => {
+      option.disabled = false; // Habilitar todas as opções de hora inicialmente
+    });
+
     loadRoomsAndProfessionals(dataConsulta, horaConsulta.value + ":00");
   }
 });
@@ -197,7 +185,7 @@ document.addEventListener("DOMContentLoaded", () => {
   loadOptions();
   const dateInput = document.getElementById("data");
   dateInput.min = getTodayDate();
-  setTimeLimits(); // Define os limites de hora
+  setTimeLimits();
 });
 
 window.agendar = {
