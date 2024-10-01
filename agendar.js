@@ -2,8 +2,7 @@ import { createClient } from "https://cdn.skypack.dev/@supabase/supabase-js";
 
 // Configuração do Supabase
 const supabaseUrl = "https://jzijhoertjzjurmghbzr.supabase.co";
-const supabaseKey =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imp6aWpob2VydGp6anVybWdoYnpyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjU0NTg4ODMsImV4cCI6MjA0MTAzNDg4M30.A6MMeZO3kkzYHRJUxka1q3L7owb60BqIBxe5TBHQKPc";
+const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imp6aWpob2VydGp6anVybWdoYnpyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjU0NTg4ODMsImV4cCI6MjA0MTAzNDg4M30.A6MMeZO3kkzYHRJUxka1q3L7owb60BqIBxe5TBHQKPc";
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 async function loadOptions() {
@@ -171,9 +170,9 @@ const setTimeLimits = () => {
 // Limpar campos ao alterar a data
 document.getElementById("data").addEventListener("change", () => {
   const dataConsulta = document.getElementById("data").value;
-  const horaConsulta = document.getElementById("hora");
 
   // Limpar os campos de hora e sala
+  const horaConsulta = document.getElementById("hora");
   horaConsulta.selectedIndex = 0; // Reseta a seleção de hora
   document.getElementById("sala").innerHTML =
     '<option value="">Selecione a Sala</option>'; // Limpa as opções de sala
@@ -183,6 +182,7 @@ document.getElementById("data").addEventListener("change", () => {
   }
 });
 
+// Modificação no evento de mudança de hora
 document.getElementById("hora").addEventListener("change", () => {
   const dataConsulta = document.getElementById("data").value;
   const horaConsulta = document.getElementById("hora").value;
