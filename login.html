@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - Pschedule</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="style2.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  </head>
+
+  <body>
+    <header>Pschedule - Sistema de Agendamento</header>
+
+    <!-- Menu de navegação -->
+    <nav class="navbar navbar-expand-lg" style="background-color: #66bb6a">
+      <div class="container">
+        <a class="navbar-brand" href="#"> </a>
+      </div>
+    </nav>
+
+    <section>
+      <!-- Informações de Login -->
+      <div id="tela-login">
+        <form id="form-login">
+          <div class="form-login">
+            <label for="usuario-login">Usuário:</label>
+            <input
+              type="text"
+              id="usuario-login"
+              class="form-control"
+              name="usuario-login"
+              required
+            />
+            <label for="senha-login">Senha:</label>
+            <input
+              type="password"
+              id="senha-login"
+              class="form-control"
+              name="senha-login"
+              required
+            />
+            <br />
+            <button type="submit" class="btn btn-login">Login</button>
+          </div>
+        </form>
+        <div
+          id="login-error"
+          class="alert alert-danger mt-3"
+          style="display: none"
+        >
+          Usuário ou senha incorretos!
+        </div>
+      </div>
+    </section>
+
+    <script type="module" src="./login.js"></script>
+  </body>
+</html>

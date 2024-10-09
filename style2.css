@@ -202,3 +202,42 @@ select option:disabled {
     background-color: rgba(237, 63, 63, 0.896);
     color: white;
 }
+
+.form-login {
+    max-width: 600px; /* Largura máxima do formulário */
+    margin: 0 auto; /* Centraliza o formulário */
+    background-color: #fff; /* Fundo branco para o formulário */
+    padding: 30px; /* Padding interno do formulário */
+    border-radius: 8px; /* Bordas arredondadas */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra do formulário */
+    transition: transform 0.3s ease; /* Efeito de transição */
+    position: relative; /* Garante que o formulário não ultrapasse a navbar */
+    z-index: 1; /* Coloca o formulário acima de outros elementos */
+}
+
+.btn-login{
+    width: 100%; /* Largura total */
+    padding: 12px 20px; /* Padding interno */
+    background-color: #4CAF50; /* Fundo verde */
+    color: white; /* Cor do texto */
+    border: none; /* Remove a borda padrão */
+    border-radius: 6px; /* Bordas arredondadas */
+    font-size: 18px; /* Tamanho da fonte */
+    cursor: pointer; /* Muda o cursor ao passar o mouse */
+    transition: background-color 0.3s ease; /* Efeito de transição */
+    font-family: 'Roboto', sans-serif; /* Garante a mesma fonte */
+}
+
+#login-error {
+    width: 40%; /* Largura total */
+    padding: 12px 20px; /* Padding interno */
+    background-color: #cf1c16; /* Fundo vermelho */
+    color: white; /* Cor do texto */
+    border: none; /* Remove a borda padrão */
+    border-radius: 6px; /* Bordas arredondadas */
+    font-size: 18px; /* Tamanho da fonte */
+    cursor: pointer; /* Muda o cursor ao passar o mouse */
+    transition: background-color 0.3s ease; /* Efeito de transição */
+    font-family: 'Roboto', sans-serif; /* Garante a mesma fonte */
+    margin: 20px auto
+}
